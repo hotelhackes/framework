@@ -5,6 +5,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import pages.HomePage;
 
 public class TestShopScenario {
 
@@ -20,6 +21,8 @@ public class TestShopScenario {
 
         // Open the website
         driver.get("http://192.168.168.108:8080/#/");
+
+
     }
 
     @After
