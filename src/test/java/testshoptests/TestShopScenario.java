@@ -19,7 +19,7 @@ public class TestShopScenario {
         driver.manage().window().maximize();
 
         // Open the website
-        driver.get("https://techblog.polteq.com/testshop");
+        driver.get("http://192.168.168.108:8080/#/");
     }
 
     @After
