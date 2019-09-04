@@ -13,28 +13,25 @@ public class ContactFormTest extends TestShopScenario {
     public void completeContactFormStructured() throws InterruptedException {
 
         HomePage homePage = new HomePage(driver);
-
         homePage.setNextButton();
         homePage.setNextButton();
         homePage.setNextButton();
         homePage.setNextButton();
         homePage.setCloseButton();
 
-// Fill contact form and submit it
-        homePage.sendFilledInContactForm(
+        String name = "hotelhacker";
+        String emailAddress = "test@test.com";
+        String phoneNumber ="09876543210";
+        String subject = "a test";
+        String message = "Some message a bit longer";
 
-                "hotelhacker",
-                "test@test.com",
-                "09876543210",
-                "a test",
-                "Some message a bit longer");
+        // Fill contact form and submit it
+        homePage.sendFilledInContactForm(name,emailAddress, phoneNumber, subject,message);
 
-        //wait for now good enough.
-     Thread.sleep(1000);
+        //wait (for now good enough.)
+        Thread.sleep(1000);
         // Verify message was sent
-                Assert.assertEquals("Thanks for getting in touch hotelhacker!",
+        Assert.assertEquals("Thanks for getting in touch " + name + "!",
                 (driver.findElement(By.xpath("//div[@class='row contact']//h2")).getText()));
-
     }
-
 }
