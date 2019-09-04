@@ -13,7 +13,6 @@ public class ContactFormTest extends TestShopScenario {
         // Goto contact us page
         HomePage homePage = new HomePage(driver);
 
-
         homePage.setNextButton();
         homePage.setNextButton();
         homePage.setNextButton();
@@ -22,18 +21,18 @@ public class ContactFormTest extends TestShopScenario {
         homePage.setCloseButton();
 
 
+// Fill contact form and submit it
+        homePage.sendFilledInContactForm(
 
-//
-//        // Fill contact form and send it
-//        ContactFormPage contactFormPage = new ContactFormPage(driver);
-//        contactFormPage.sendFilledInContactForm(
-//                ContactFormPage.SubjectHeadings.WEBMASTER,
-//                "test@test.com",
-//                "0987654321",
-//                "Some message");
-//
-//        // Verify message was sent
-//        Assert.assertEquals("Your message has been successfully sent to our team.",
+                "hotelhacker",
+                "test@test.com",
+                "0987654321",
+                "a test",
+                "Some message");
+
+        // Verify message was sent
+        // TODO
+        //Assert.assertEquals("Your message has been successfully sent to our team.",
 //                contactFormPage.getAlertMessage());
 
     }
