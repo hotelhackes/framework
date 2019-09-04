@@ -5,12 +5,13 @@ import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import pages.HomePage;
 
 public class TestShopScenario {
 
     protected WebDriver driver;
     protected WebDriverWait myWaitVar;
-
+    protected HomePage homePage;
     @Before
     public void setUp() {
         // Create a new instance of the Chrome driver
@@ -20,6 +21,13 @@ public class TestShopScenario {
 
         // Open the website
         driver.get("http://192.168.168.108:8080/#/");
+        homePage = new HomePage(driver);
+        homePage.setNextButton();
+        homePage.setNextButton();
+        homePage.setNextButton();
+        homePage.setNextButton();
+        homePage.setCloseButton();
+
     }
 
     @After

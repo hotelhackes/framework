@@ -1,6 +1,8 @@
 package testshoptests.structured;
 
 import org.junit.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import pages.ContactFormPage;
 import pages.HomePage;
 import testshoptests.TestShopScenario;
@@ -8,33 +10,20 @@ import testshoptests.TestShopScenario;
 public class ContactFormTest extends TestShopScenario {
 
     @Test
-    public void completeContactFormStructured() {
+    public void completeContactFormHappyFlow() throws InterruptedException {
 
-        // Goto contact us page
-        HomePage homePage = new HomePage(driver);
+        String name = "hotelhacker";
+        String emailAddress = "test@test.com";
+        String phoneNumber ="09876543210";
+        String subject = "a test";
+        String message = "Some message a bit longer";
 
-        homePage.setNextButton();
-        homePage.setNextButton();
-        homePage.setNextButton();
-        homePage.setNextButton();
-//        homePage.setNextButton();
-        homePage.setCloseButton();
+        homePage.sendFilledInContactForm(name,emailAddress, phoneNumber, subject,message);
 
-
-// Fill contact form and submit it
-        homePage.sendFilledInContactForm(
-
-                "hotelhacker",
-                "test@test.com",
-                "0987654321",
-                "a test",
-                "Some message");
-
+        //wait (for now good enough.)
+        Thread.sleep(1000);
         // Verify message was sent
-        // TODO
-        //Assert.assertEquals("Your message has been successfully sent to our team.",
-//                contactFormPage.getAlertMessage());
-
+        Assert.assertEquals("Thanks for getting in touch " + name + "!",
+                (driver.findElement(By.xpath("//div[@class='row contact']//h2")).getText()));
     }
-
 }
