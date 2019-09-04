@@ -28,4 +28,13 @@ public class AdminPageLogin extends BasePage {
         searchField2.sendKeys(password);
     }
 
+    @FindBy(id = "doLogin")
+    private WebElement loginButton;
+
+    public void setLoginButton() {
+
+        loginButton.click();
+
+    }
+
 }
