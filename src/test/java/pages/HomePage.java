@@ -10,6 +10,27 @@ import java.util.List;
 
 public class HomePage extends BasePage {
 
+
+    //region - locators contact form
+    @FindBy(css = "[id='name']")
+    private WebElement contactNameField;
+
+    @FindBy(css = "[id='email']")
+    private WebElement contactEmailField;
+
+    @FindBy(css = "[id='phone']")
+    private WebElement contactPhoneField;
+
+    @FindBy(css = "[id='subject']")
+    private WebElement contactSubjectField;
+
+    @FindBy(css = "[id='description']")
+    private WebElement contactDescriptionField;
+
+    @FindBy(css = "[id='submitContact']")
+    private WebElement contactSubmitButton;
+    //endregion
+
     @FindBy(id = "next")
     private WebElement nextButton;
 
@@ -26,77 +47,49 @@ public class HomePage extends BasePage {
         closeButton.click();
     }
 
-    //    @FindBy(css = "li#header_link_contact > a")
-//    private WebElement contactButton;
-//
-//    @FindBy(css = "[class='login']")
-//    private WebElement logInButton;
-//
-//    @FindBy(css = "[title='Home']")
-//    private WebElement homeButton;
-//
-//    @FindBy(css = "[name='search_query']")
-//    private WebElement searchField;
-//
-//    @FindBy(css = "[name='submit_search']")
-//    private WebElement submitSearch;
-//
-//    @FindBy(css = "#tags_block_left > div")
-//    private WebElement tagContainer;
-//
-//    private By accountDetailsButton = By.cssSelector("[class='account']");
+    //region - public page methods contactform
+    public void sendFilledInContactForm(String name,
+                                        String emailAddress,
+                                        String phone,
+                                        String subject,
+                                        String description) {
+        fillContactName(name);
+        fillContactEmailAddress(emailAddress);
+        fillContactPhone(phone);
+        fillSubject(subject);
+        fillDescription(description);
+        clickSubmit();
+    }
 
+    public void fillContactName(String name) {
+        fillField(contactNameField, name);
+    }
+
+    public void fillContactEmailAddress(String emailAddress) {
+        fillField(contactEmailField, emailAddress);
+    }
+
+    public void fillContactPhone(String phone) {
+        fillField(contactPhoneField, phone);
+    }
+
+    public void fillSubject(String subject) {
+        fillField(contactSubjectField, subject);
+    }
+
+    public void fillDescription(String description) {
+        fillField(contactDescriptionField, description);
+    }
+
+    public void clickSubmit() {
+        contactSubmitButton.click();
+    }
+    //endregion
+
+    //region - constructor(s)
     public HomePage(WebDriver driver) {
         super(driver);
     }
+    //endregion
 
-//    public void openContactUsPage() {
-//        contactButton.click();
-//    }
-//
-//    public void clickLogIn() {
-//        logInButton.click();
-//    }
-//
-//    public void goToHomePage() {
-//        homeButton.click();
-//    }
-//
-//    public String getAccountName() {
-//        List<WebElement> el = driver.findElements(accountDetailsButton);
-//        if (el.size() != 0) {
-//            for (WebElement element : el) {
-//                return element.getText();
-//            }
-//        }
-//        return "account details button is not present on the page";
-//    }
-
-//    private WebElement getTagsBlock() {
-//        return tagContainer;
-//    }
-//
-//    public Boolean tagPresent(String tagName) {
-//        List<String> tagsList = new ArrayList<>();
-//        List<WebElement> tagsBlock = getTagsBlock().findElements(By.cssSelector("a"));
-//        for (WebElement webElement : tagsBlock) {
-//            tagsList.add(webElement.getText());
-//        }
-//        return tagsList.contains(tagName);
-//    }
-//
-//    public List<WebElement> getProducts() {
-//        WebElement productList = driver.findElement(By.cssSelector("#product_list"));
-//        return productList.findElements(By.cssSelector("a.product-name"));
-//    }
-//
-//    public List<WebElement> getStocks() {
-//        WebElement productList = driver.findElement(By.cssSelector("#product_list"));
-//        return productList.findElements(By.cssSelector(".availability"));
-//    }
-//
-//    public void searchProduct(String searchInput) {
-//        searchField.sendKeys(searchInput);
-//        submitSearch.click();
-//    }
 }

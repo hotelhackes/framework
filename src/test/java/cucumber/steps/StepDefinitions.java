@@ -58,7 +58,9 @@ public class StepDefinitions {
     @When("I send a contact form")
     public void iSendAContactForm(DataTable table) {
         // Goto contact us page
-        homePage.openContactUsPage();
+
+        //TODO this is no longer valid
+        // homePage.openContactUsPage();
 
         // Fill contact form and send it
         List<Map<String, String>> contactFormValues = table.asMaps(String.class, String.class);
