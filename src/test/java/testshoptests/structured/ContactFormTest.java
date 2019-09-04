@@ -10,14 +10,7 @@ import testshoptests.TestShopScenario;
 public class ContactFormTest extends TestShopScenario {
 
     @Test
-    public void completeContactFormStructured() throws InterruptedException {
-
-        HomePage homePage = new HomePage(driver);
-        homePage.setNextButton();
-        homePage.setNextButton();
-        homePage.setNextButton();
-        homePage.setNextButton();
-        homePage.setCloseButton();
+    public void completeContactFormHappyFlow() throws InterruptedException {
 
         String name = "hotelhacker";
         String emailAddress = "test@test.com";
@@ -25,7 +18,6 @@ public class ContactFormTest extends TestShopScenario {
         String subject = "a test";
         String message = "Some message a bit longer";
 
-        // Fill contact form and submit it
         homePage.sendFilledInContactForm(name,emailAddress, phoneNumber, subject,message);
 
         //wait (for now good enough.)
